@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Manual class-based dark mode toggling in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Option A visual direction: Editorial Clear (Anthropic-style) */
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Custom palette */
+  --color-brand-bg-light: #faf9f5;
+  --color-brand-text-light: #141413;
+  --color-brand-accent: #d97757;
+  --color-brand-accent-hover: #c55f3e;
+
+  /* Accent and subtle colors */
+  --color-brand-muted-light: #6e6d6a;
+  --color-brand-card-light: #f3f1eb;
+  --color-brand-border-light: #e6e4dc;
+
+  /* Dark mode palette (Warm high-contrast near-black slate) */
+  --color-brand-bg-dark: #121211;
+  --color-brand-text-dark: #f5f4f0;
+  --color-brand-muted-dark: #a19f9a;
+  --color-brand-card-dark: #1e1d1b;
+  --color-brand-border-dark: #2d2b29;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
