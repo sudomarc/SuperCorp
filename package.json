@@ -1,0 +1,20 @@
+{
+  "name": "supercorp-b2b",
+  "version": "1.0.0",
+  "description": "Premium Editorial B2B Digital Agency",
+  "main": "index.html",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o dist/output.css --minify",
+    "dev": "tailwindcss -i src/input.css -o dist/output.css --watch"
+  },
+  "keywords": [],
+  "author": "Jules",
+  "license": "ISC",
+  "dependencies": {
+    "lucide": "^0.469.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
