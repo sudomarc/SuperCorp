@@ -1,0 +1,39 @@
+name: Build Tailwind CSS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/input.css'
+      - 'index.html'
+      - 'package.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build CSS
+        run: npm run build
+
+      - name: Commit compiled CSS if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/output.css
+          git diff --cached --quiet || git commit -m "chore: rebuild dist/output.css [skip ci]"
+          git push

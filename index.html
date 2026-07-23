@@ -13,17 +13,15 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://supercorp.agency/">
+    <meta property="og:url" content="https://sudomarc.github.io/SuperCorp/">
     <meta property="og:title" content="SuperCorp | Bespoke Software Engineering & Digital Strategy Agency">
     <meta property="og:description" content="We design and build high-performance custom applications, scalable data platforms, and editorial digital experiences for enterprise and mid-market operations.">
-    <meta property="og:image" content="https://supercorp.agency/assets/og-image.jpg">
 
     <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://supercorp.agency/">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://sudomarc.github.io/SuperCorp/">
     <meta property="twitter:title" content="SuperCorp | Bespoke Software Engineering & Digital Strategy Agency">
     <meta property="twitter:description" content="We design and build high-performance custom applications, scalable data platforms, and editorial digital experiences for enterprise and mid-market operations.">
-    <meta property="twitter:image" content="https://supercorp.agency/assets/og-image.jpg">
 
     <!-- Favicon (SVG for high fidelity) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d97757' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
@@ -114,7 +112,7 @@
                 </a>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="md:hidden p-2 border border-brand-border-light dark:border-brand-border-dark text-brand-muted-light dark:text-brand-muted-dark hover:text-brand-text-light dark:hover:text-brand-text-dark transition-colors duration-200">
+                <button id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden p-2 border border-brand-border-light dark:border-brand-border-dark text-brand-muted-light dark:text-brand-muted-dark hover:text-brand-text-light dark:hover:text-brand-text-dark transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -773,7 +771,8 @@
         const mobileMenu = document.getElementById('mobileMenu');
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
         });
 
         // Close drawer immediately when clicking navigation items
